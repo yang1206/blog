@@ -1,37 +1,32 @@
-import { rehypeHeadingIds } from '@astrojs/markdown-remark'
-import vercel from '@astrojs/vercel'
-import AstroPureIntegration from 'astro-pure'
-import { defineConfig, fontProviders } from 'astro/config'
-import rehypeKatex from 'rehype-katex'
-import remarkMath from 'remark-math'
+import { rehypeHeadingIds } from '@astrojs/markdown-remark';
+import AstroPureIntegration from 'astro-pure';
+import { defineConfig, fontProviders } from 'astro/config';
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
+
+
 
 // Local integrations
-import rehypeAutolinkHeadings from './src/plugins/rehype-auto-link-headings.ts'
+import rehypeAutolinkHeadings from './src/plugins/rehype-auto-link-headings.ts';
 // Shiki
-import {
-  addCollapse,
-  addCopyButton,
-  addLanguage,
-  addTitle,
-  updateStyle
-} from './src/plugins/shiki-custom-transformers.ts'
-import {
-  transformerNotationDiff,
-  transformerNotationHighlight,
-  transformerRemoveNotationEscape
-} from './src/plugins/shiki-official/transformers.ts'
-import config from './src/site.config.ts'
+import { addCollapse, addCopyButton, addLanguage, addTitle, updateStyle } from './src/plugins/shiki-custom-transformers.ts';
+import { transformerNotationDiff, transformerNotationHighlight, transformerRemoveNotationEscape } from './src/plugins/shiki-official/transformers.ts';
+import config from './src/site.config.ts';
+
 
 // https://astro.build/config
 export default defineConfig({
   // [Basic]
-  site: 'https://astro-pure.js.org',
+  site: 'https://yang1206.asia',
+
   // Deploy to a sub path
   // https://astro-pure.js.org/docs/setup/deployment#platform-with-base-path
   // base: '/astro-pure/',
   trailingSlash: 'never',
+
   // root: './my-project-directory',
   server: { host: true },
+
   // https://docs.astro.build/en/guides/prefetch/
   prefetch: {
     // prefetchAll: true,
@@ -40,8 +35,8 @@ export default defineConfig({
 
   // [Adapter]
   // https://docs.astro.build/en/guides/deploy/
-  adapter: vercel({ imageService: true }),
-  output: 'server',
+  output: 'static',
+
   // Local (standalone)
   // adapter: node({ mode: 'standalone' }),
   // output: 'server',
@@ -50,9 +45,10 @@ export default defineConfig({
   image: {
     responsiveStyles: true,
     service: { entrypoint: 'astro/assets/services/sharp' },
-    // domains: ['ghchart.rshah.org'],
+    domains: ['ghchart.rshah.org', 'cravatar.cn'],
     remotePatterns: [{ protocol: 'https' }]
   },
+
   // Enable font preloading and optimization
   // https://docs.astro.build/en/guides/fonts/
   fonts: [

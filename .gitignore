@@ -2,8 +2,8 @@
 dist/
 .astro/
 
-### Vercel ###
-.vercel/
+### Cloudflare ###
+.wrangler/
 
 ### Vim ###
 [._]*.un~
